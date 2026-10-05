@@ -1,4 +1,4 @@
-// Bài 1: Virtual Calculator
+
 import React, { useState } from 'react';
 
 const Display = ({ value }) => (
