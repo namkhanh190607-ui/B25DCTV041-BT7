@@ -1,0 +1,52 @@
+
+import React from 'react';
+
+const Header = ({ name, title }) => (
+  <header style={{ textAlign: 'center', borderBottom: '2px solid #ccc', paddingBottom: '10px' }}>
+    <h1>{name}</h1>
+    <h2>{title}</h2>
+  </header>
+);
+
+const Section = ({ title, children }) => (
+  <section style={{ margin: '20px 0' }}>
+    <h3 style={{ color: '#d32f2f' }}>{title}</h3>
+    <div style={{ paddingLeft: '15px' }}>{children}</div>
+  </section>
+);
+
+const List = ({ items, isProject }) => (
+  <ul>
+    {items.map((item, idx) => (
+      <li key={idx} style={{ marginBottom: '8px' }}>
+        {isProject ? (
+          <><strong>{item.name}</strong>: {item.desc}</>
+        ) : (
+          item
+        )}
+      </li>
+    ))}
+  </ul>
+);
+
+export function CVApp() {
+  const skills = ['ReactJS', 'JavaScript', 'HTML/CSS', 'Git'];
+  const projects = [
+    { name: 'Virtual Calculator', desc: 'Ứng dụng máy tính cơ bản' },
+    { name: 'Todo List', desc: 'Quản lý công việc hằng ngày' }
+  ];
+
+  return (
+    <div style={{ maxWidth: '600px', margin: '20px auto', fontFamily: 'sans-serif' }}>
+      <Header name="Nguyễn Văn A" title="React Developer" />
+      
+      <Section title="KỸ NĂNG">
+        <List items={skills} isProject={false} />
+      </Section>
+      
+      <Section title="DỰ ÁN">
+        <List items={projects} isProject={true} />
+      </Section>
+    </div>
+  );
+}
